@@ -110,24 +110,3 @@ Comments:
 """
 )
 
-st.markdown("""---""")
-
-st.subheader('Effect of C value on PSNR results for the joint approach')
-
-col_0, col_1 = st.columns(2)
-
-with col_0:
-    low_res_results = load_avg_patient_result('6_percent_measurements')
-    plot_per_patient_average(low_res_results)
-
-with col_1:
-    high_res_results = load_avg_patient_result('25_percent_measurements')
-    plot_per_patient_average(high_res_results)
-
-
-st.markdown(
-"""
-Comments:
-- Increasing the value of C decreases the PSNR of the reconstruction yielded by the joint approach
-"""
-)
