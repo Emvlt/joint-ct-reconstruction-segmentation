@@ -1,0 +1,5 @@
+Annotation,unet_shuffle_inception_no_progressive
+small,0.9999303107206272
+large,0.9998429095699788
+with,0.9999275294923126
+without,0.999961612750868

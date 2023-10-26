@@ -1,0 +1,2 @@
+PSNR_loss,BCE_loss,TP,FP,TN,FN,Sensitivity,Specificity,DICE,C
+,7.271787626097428e-05,0.0,10.0629871626564,262133.94248202513,0.0,,0.999961612750868,0.0,unet_shuffle_inception_no_progressive
