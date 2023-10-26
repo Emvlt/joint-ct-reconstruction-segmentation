@@ -5,7 +5,7 @@ from pathlib import Path
 import streamlit as st
 import pandas as pd
 
-metrics = ['BCE_loss', 'PSNR_loss', 'TP', 'FP', 'TN', 'FN', 'Specificity', 'Sensitivity', 'DICE']
+metrics = ['BCE_loss', 'PSNR_loss', 'TP', 'FP', 'TN', 'FN', 'Sensitivity', 'DICE']
 
 annotations = ['small', 'large', 'with', 'without']
 
