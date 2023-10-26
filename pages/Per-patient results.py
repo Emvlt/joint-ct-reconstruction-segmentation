@@ -94,7 +94,7 @@ experiment_folder_name = st.sidebar.selectbox(
 
 metric = st.sidebar.selectbox(
     'Select Metric',
-    ['BCE_loss', 'PSNR_loss', 'TP', 'FP', 'TN', 'FN', 'Specificity', 'Sensitivity', 'DICE']
+    ['BCE_loss', 'PSNR_loss', 'TP', 'FP', 'TN', 'FN', 'Sensitivity', 'DICE']
     )
 
 result_patients_data = pd.concat([pd.read_csv(f'./new_processed_results/{experiment_folder_name}/lpd_unet_{c}.csv') for c in modality_list])
