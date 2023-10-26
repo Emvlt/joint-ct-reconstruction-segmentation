@@ -12,8 +12,8 @@ patient_id = st.sidebar.selectbox(
     'Select Patient Id',
     ['LIDC-IDRI-0936', 'LIDC-IDRI-0940']
     )
-cs = ['0_1', '0_2', '0_3', '0_4', '0_5', '0_6', '0_7', '0_8', '0_9', 'end_to_end', 'sequential']
-result_patients_data = pd.concat([pd.read_csv(f'raw_results/25_percent_measurements/lpd_unet_{c}.csv') for c in cs])
+
+result_patients_data = pd.read_csv(f'new_processed_results/25_percent_measurements/lpd_unet_sequential.csv')
 result_patient_data = result_patients_data[result_patients_data['patient_index'] == patient_id]
 rows_with_annotation = result_patient_data[~result_patient_data["n_annotations"].isna()]
 slices_with_annotation = rows_with_annotation["slice_index"].unique()

@@ -25,9 +25,9 @@ C_dict = {
         }
 
 def load_avg_patient_result(setting:str, metric = 'PSNR_loss'):
-    path_to_patient_result = Path(f'processed_results/{setting}/per_patient_all_annotations_{metric}.csv')
+    path_to_patient_result = Path(f'new_processed_results/{setting}/per_patient_all_annotations_{metric}.csv')
     if not path_to_patient_result.is_file():
-        path_to_all_annotations_results = Path(f'processed_results/{setting}/all_annotations_{metric}.csv')
+        path_to_all_annotations_results = Path(f'new_processed_results/{setting}/all_annotations_{metric}.csv')
         all_annotations_results = pd.read_csv(path_to_all_annotations_results)
         result_dict = {
             'patient_id':[],
@@ -87,7 +87,7 @@ def plot_per_patient_average(data):
 ### Make full width
 st.set_page_config(layout="wide")
 
-path_to_reconstruction_results = Path(f'processed_results/reconstruction/reconstruction_results.csv')
+path_to_reconstruction_results = Path(f'new_processed_results/reconstruction/reconstruction_results.csv')
 
 results_df = pd.read_csv(path_to_reconstruction_results)
 
