@@ -23,6 +23,8 @@ modality_to_display = {
     'sequential':'sequential'
 }
 
+display_to_modality = dict((v, k) for k, v in modality_to_display.items())
+
 settings = [
     '6_percent_measurements',
     '25_percent_measurements'
@@ -74,16 +76,16 @@ col_0, col_1 = st.columns(2)
 
 with col_0:
     st.header(f'Sparse-View Results')
-    st.subheader(f'Distribution of {metric} values for modalitity {modality_to_display[modality]}')
+    st.subheader(f'Distribution of {metric} values for modalitity {modality}')
     path_to_data = f'new_processed_results/6_percent_measurements/{metric}_histogram.csv'
     dataframe = pd.read_csv(path_to_data)
-    dataframe = dataframe[dataframe['Modality'].isin( [modality,'sequential'])]
+    dataframe = dataframe[dataframe['Modality'].isin( [display_to_modality[modality],'sequential'])]
     write_histogram(dataframe)
 
 with col_1:
     st.header(f'High Angular Resolution Results')
-    st.subheader(f'Distribution of {metric} values for modalitity {modality_to_display[modality]}')
+    st.subheader(f'Distribution of {metric} values for modalitity {modality}')
     path_to_data = f'new_processed_results/25_percent_measurements/{metric}_histogram.csv'
     dataframe = pd.read_csv(path_to_data)
-    dataframe = dataframe[dataframe['Modality'].isin( [modality,'sequential'])]
+    dataframe = dataframe[dataframe['Modality'].isin( [display_to_modality[modality],'sequential'])]
     write_histogram(dataframe)
