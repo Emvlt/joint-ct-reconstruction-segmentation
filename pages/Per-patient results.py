@@ -8,7 +8,7 @@ modality_list = [
         '1', 'sequential'
         ]
 
-C_dict = {
+modality_df_to_display = {
             '0_1': 0.1,
             '0_2': 0.2,
             '0_3': 0.3,
@@ -21,6 +21,18 @@ C_dict = {
             '1':1,
             'sequential':'sequential'
         }
+
+modality_display_to_df = {value:key for key, value in modality_df_to_display.items()}
+
+setting_folder_names_df_to_display = {
+    '6_percent_measurements':'Sparse-View',
+    '25_percent_measurements':'High-Resolution'
+    }
+
+setting_folder_display_to_df = {
+    'Sparse-View':'6_percent_measurements',
+    'High-Resolution':'25_percent_measurements'
+    }
 
 def write_per_slice_results(data, metric):
 
@@ -85,11 +97,9 @@ st.set_page_config(layout="wide")
 ### CSS
 st.sidebar.title('Per-Patient Results')
 
-experiment_folder_names = ['6_percent_measurements', '25_percent_measurements']
-
-experiment_folder_name = st.sidebar.selectbox(
-    'Select Experiment Type',
-    experiment_folder_names
+setting_folder_name_display = st.sidebar.selectbox(
+    'Select Setting',
+    list(setting_folder_display_to_df.keys())
     )
 
 metric = st.sidebar.selectbox(
@@ -97,25 +107,29 @@ metric = st.sidebar.selectbox(
     ['BCE_loss', 'PSNR_loss', 'TP', 'FP', 'TN', 'FN', 'Sensitivity', 'DICE']
     )
 
-result_patients_data = pd.concat([pd.read_csv(f'./new_processed_results/{experiment_folder_name}/lpd_unet_{c}.csv') for c in modality_list])
-unique_patients_ids = result_patients_data['patient_index'].unique()
+modality_display = st.sidebar.selectbox(
+    'Select Joint Modality, C = ',
+    modality_display_to_df
+    )
+
+setting_name_df = setting_folder_display_to_df[setting_folder_name_display]
+
+
+sequential_patient_data = pd.read_csv(f'./new_processed_results/{setting_name_df}/lpd_unet_sequential.csv')
+unique_patients_ids = sequential_patient_data['patient_index'].unique()
 
 patient_id = st.sidebar.selectbox(
     'Select Patient Focus',
     unique_patients_ids
     )
 
-col_2, col_3 = st.columns(2)
-result_patient_data = result_patients_data[result_patients_data['patient_index'] == patient_id]
-rows_with_annotation = result_patient_data[~result_patient_data["n_annotations"].isna()]
+modality_patient_data = pd.read_csv(f'./new_processed_results/{setting_name_df}/lpd_unet_{modality_display_to_df[modality_display]}.csv')
+
+complete_patient_data = pd.concat([sequential_patient_data, modality_patient_data])
+
+complete_patient_data = complete_patient_data[complete_patient_data['patient_index'] == patient_id]
+rows_with_annotation = complete_patient_data[~complete_patient_data["n_annotations"].isna()]
 slices_with_annotation = rows_with_annotation["slice_index"].unique()
 
-with col_2:
-    write_per_slice_results(result_patient_data, metric)
+write_per_slice_results(complete_patient_data, metric)
 
-with col_3:
-    st.subheader(f'Slices with annotations: ')
-    st.text(f'{slices_with_annotation}')
-    st.subheader(f'Average {metric} on slices with annotation')
-    for c_value in modality_list:
-        st.text(f'C = {c_value} : {rows_with_annotation[rows_with_annotation["C"] == C_dict[c_value]][metric].mean()}')
