@@ -1,7 +1,4 @@
-from pathlib import Path
-
 import streamlit as st
-import pandas as pd
 
 from utils import display_per_modality_results, load_per_modality_results
 from constants import display_to_metrics

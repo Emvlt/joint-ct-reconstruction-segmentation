@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 from utils import plot_per_slice_results
-from constants import modalities_to_display, displays_to_modality
+from constants import displays_to_modality
 
 setting_folder_names_df_to_display = {
     '6_percent_measurements':'Sparse-View',

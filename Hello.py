@@ -32,8 +32,8 @@ def run():
         ### Browse pages from the sidebar
         - Averaged Metrics shows the different evaluation metrics averaged on the test dataset
         - Metrics Histograms compares the histogram of metrics values between the sequential approach and a given modality.
-        - Per-patient results shows the per-patient insight on each method's performance
-        - Visuals shows a per-patient result for slice reconstruction and segmentation
+        - Per-Slice results shows the per-patient insight on each method's performance
+        - Visuals shows a per-patient qualitative result for slice reconstruction and segmentation
     """
     )
 

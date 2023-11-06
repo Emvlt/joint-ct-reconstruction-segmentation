@@ -3,7 +3,6 @@ from typing import Dict
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 setting_names = ['6_percent_measurements', '25_percent_measurements']
 
