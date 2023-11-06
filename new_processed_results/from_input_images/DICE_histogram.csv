@@ -1,0 +1,11 @@
+Modality,DICE,Count
+unet_shuffle_inception_no_progressive,0.00,473
+unet_shuffle_inception_no_progressive,0.10,29
+unet_shuffle_inception_no_progressive,0.20,31
+unet_shuffle_inception_no_progressive,0.30,28
+unet_shuffle_inception_no_progressive,0.40,20
+unet_shuffle_inception_no_progressive,0.50,20
+unet_shuffle_inception_no_progressive,0.60,26
+unet_shuffle_inception_no_progressive,0.70,32
+unet_shuffle_inception_no_progressive,0.80,25
+unet_shuffle_inception_no_progressive,0.90,2

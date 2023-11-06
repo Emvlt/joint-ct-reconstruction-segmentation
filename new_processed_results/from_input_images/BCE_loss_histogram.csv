@@ -1,0 +1,11 @@
+Modality,BCE_loss,Count
+unet_shuffle_inception_no_progressive,0.00,576
+unet_shuffle_inception_no_progressive,0.03,37
+unet_shuffle_inception_no_progressive,0.06,31
+unet_shuffle_inception_no_progressive,0.09,14
+unet_shuffle_inception_no_progressive,0.12,15
+unet_shuffle_inception_no_progressive,0.14,2
+unet_shuffle_inception_no_progressive,0.17,5
+unet_shuffle_inception_no_progressive,0.20,2
+unet_shuffle_inception_no_progressive,0.23,2
+unet_shuffle_inception_no_progressive,0.26,2

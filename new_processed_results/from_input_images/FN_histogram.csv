@@ -1,0 +1,11 @@
+Modality,FN,Count
+unet_shuffle_inception_no_progressive,2.00,378
+unet_shuffle_inception_no_progressive,122.47,142
+unet_shuffle_inception_no_progressive,242.93,57
+unet_shuffle_inception_no_progressive,363.40,36
+unet_shuffle_inception_no_progressive,483.87,29
+unet_shuffle_inception_no_progressive,604.34,19
+unet_shuffle_inception_no_progressive,724.80,13
+unet_shuffle_inception_no_progressive,845.27,7
+unet_shuffle_inception_no_progressive,965.74,2
+unet_shuffle_inception_no_progressive,1086.20,3

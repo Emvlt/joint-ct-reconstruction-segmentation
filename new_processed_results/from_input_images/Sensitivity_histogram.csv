@@ -1,0 +1,11 @@
+Modality,Sensitivity,Count
+unet_shuffle_inception_no_progressive,0.00,479
+unet_shuffle_inception_no_progressive,0.10,42
+unet_shuffle_inception_no_progressive,0.20,21
+unet_shuffle_inception_no_progressive,0.30,34
+unet_shuffle_inception_no_progressive,0.40,21
+unet_shuffle_inception_no_progressive,0.50,27
+unet_shuffle_inception_no_progressive,0.60,21
+unet_shuffle_inception_no_progressive,0.70,22
+unet_shuffle_inception_no_progressive,0.80,10
+unet_shuffle_inception_no_progressive,0.90,9

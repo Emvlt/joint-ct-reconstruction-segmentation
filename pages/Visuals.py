@@ -5,8 +5,7 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-
-st.sidebar.title('Results')
+st.sidebar.title('Refine Selection')
 
 patient_id = st.sidebar.selectbox(
     'Select Patient Id',
@@ -21,6 +20,8 @@ slices_with_annotation = rows_with_annotation["slice_index"].unique()
 ### Image viewer
 path_to_image_folder = Path(f'visuels/sequential/{patient_id}')
 
+st.title('Qualitative Analysis - Display of Reference / Joint / Sequential Results')
+
 st.text(f'Slices with annotations: {list(slices_with_annotation)}')
 
 slice_index = st.select_slider(
@@ -30,23 +31,32 @@ slice_index = st.select_slider(
 col_0, col_1, col_2 = st.columns(3)
 
 with col_0:
-    st.subheader('Reference Images')
+    pipeline = 'Reference'
+    st.subheader(f'{pipeline} Images')
     image = Image.open(Path(f'visuels/sequential/{patient_id}/slice_{slice_index}_input.jpg')) #type:ignore
+    st.text(f'{pipeline} Reconstruction')
     st.image(image)
     image = Image.open(Path(f'visuels/sequential/{patient_id}/slice_{slice_index}_mask.jpg')) #type:ignore
+    st.text(f'{pipeline} Mask')
     st.image(image)
 
 with col_1:
-    st.subheader('Joint Approach Results (C=1)')
+    pipeline = 'Joint'
+    st.subheader(f'{pipeline} Approach Results (C=1)')
     image = Image.open(Path(f'visuels/joint/{patient_id}/slice_{slice_index}_reconstruction.jpg')) #type:ignore
+    st.text(f'{pipeline} Reconstruction')
     st.image(image)
     image = Image.open(Path(f'visuels/joint/{patient_id}/slice_{slice_index}_segmentation.jpg')) #type:ignore
+    st.text(f'{pipeline} Segmentation')
     st.image(image)
 
 with col_2:
-    st.subheader('Sequential Approach Results')
+    pipeline = 'Sequential'
+    st.subheader(f'{pipeline} Approach Results')
     image = Image.open(Path(f'visuels/sequential/{patient_id}/slice_{slice_index}_reconstruction.jpg')) #type:ignore
+    st.text(f'{pipeline} Reconstruction')
     st.image(image)
     image = Image.open(Path(f'visuels/sequential/{patient_id}/slice_{slice_index}_segmentation.jpg')) #type:ignore
+    st.text(f'{pipeline} Segmentation')
     st.image(image)
 

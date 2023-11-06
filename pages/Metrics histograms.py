@@ -2,59 +2,8 @@ import streamlit as st
 
 import pandas as pd
 
-modality_list = [
-        '0_1', '0_2', '0_3',
-        '0_4', '0_5', '0_6',
-        '0_7', '0_8', '0_9',
-        '1', 'sequential'
-        ]
-
-modality_to_display = {
-    '0_1':'C = 0.1',
-    '0_2':'C = 0.2',
-    '0_3':'C = 0.3',
-    '0_4':'C = 0.4',
-    '0_5':'C = 0.5',
-    '0_6':'C = 0.6',
-    '0_7':'C = 0.7',
-    '0_8':'C = 0.8',
-    '0_9':'C = 0.9',
-    '1'  :'C = 1',
-    'sequential':'sequential'
-}
-
-display_to_modality = dict((v, k) for k, v in modality_to_display.items())
-
-settings = [
-    '6_percent_measurements',
-    '25_percent_measurements'
-    ]
-
-def write_histogram(data):
-
-    chart = {
-        "height": 512,
-        "mark": "bar",
-        "encoding": {
-            "x": {
-                "field": "DICE",
-                "format": ".2f",
-                },
-            "y": {
-                "field": "Count",
-                "type": "quantitative"
-                },
-            "xOffset": {"field": "Modality"},
-            "color": {"field": "Modality"}
-        }
-    }
-
-    st.vega_lite_chart(
-            data,
-            chart,
-            theme="streamlit",
-            use_container_width=True
-        )
+from constants import metrics, modality_list, modalities_to_display, displays_to_modality
+from utils import write_histogram
 
 ### Make full width
 st.set_page_config(layout="wide")
@@ -62,30 +11,31 @@ st.set_page_config(layout="wide")
 ### CSS
 st.sidebar.title('Histograms')
 
-metric = st.sidebar.selectbox(
+metric_name = st.sidebar.selectbox(
     'Select Metric',
-    ['DICE']
+    metrics
     )
 
 modality = st.sidebar.selectbox(
     'Select modality',
-    [modality_to_display[mod] for mod in modality_list[:-1]]
+    [modalities_to_display[mod] for mod in modality_list[:-1]]
     )
 
 col_0, col_1 = st.columns(2)
 
 with col_0:
     st.header(f'Sparse-View Results')
-    st.subheader(f'Distribution of {metric} values for modalitity {modality}')
-    path_to_data = f'new_processed_results/6_percent_measurements/{metric}_histogram.csv'
+    st.subheader(f'Distribution of {metric_name} values for modalitity {modality}')
+    path_to_data = f'new_processed_results/6_percent_measurements/{metric_name}_histogram.csv'
     dataframe = pd.read_csv(path_to_data)
-    dataframe = dataframe[dataframe['Modality'].isin( [display_to_modality[modality],'sequential'])]
-    write_histogram(dataframe)
+    dataframe = dataframe[dataframe['Modality'].isin( [displays_to_modality[modality],'lpd_unet_sequential'])]
+    write_histogram(dataframe, metric_name)
 
 with col_1:
     st.header(f'High Angular Resolution Results')
-    st.subheader(f'Distribution of {metric} values for modalitity {modality}')
-    path_to_data = f'new_processed_results/25_percent_measurements/{metric}_histogram.csv'
+    st.subheader(f'Distribution of {metric_name} values for modalitity {modality}')
+    path_to_data = f'new_processed_results/25_percent_measurements/{metric_name}_histogram.csv'
     dataframe = pd.read_csv(path_to_data)
-    dataframe = dataframe[dataframe['Modality'].isin( [display_to_modality[modality],'sequential'])]
-    write_histogram(dataframe)
+    dataframe = dataframe[dataframe['Modality'].isin([displays_to_modality[modality],'lpd_unet_sequential'])]
+    write_histogram(dataframe, metric_name)
+

@@ -1,0 +1,11 @@
+Modality,TN,Count
+unet_shuffle_inception_no_progressive,260912.41,5
+unet_shuffle_inception_no_progressive,261035.36,5
+unet_shuffle_inception_no_progressive,261158.31,6
+unet_shuffle_inception_no_progressive,261281.26,20
+unet_shuffle_inception_no_progressive,261404.22,25
+unet_shuffle_inception_no_progressive,261527.17,42
+unet_shuffle_inception_no_progressive,261650.12,53
+unet_shuffle_inception_no_progressive,261773.07,83
+unet_shuffle_inception_no_progressive,261896.02,156
+unet_shuffle_inception_no_progressive,262018.98,291

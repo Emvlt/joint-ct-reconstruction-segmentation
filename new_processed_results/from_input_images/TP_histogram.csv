@@ -1,0 +1,11 @@
+Modality,TP,Count
+unet_shuffle_inception_no_progressive,0.00,592
+unet_shuffle_inception_no_progressive,71.83,43
+unet_shuffle_inception_no_progressive,143.65,8
+unet_shuffle_inception_no_progressive,215.48,17
+unet_shuffle_inception_no_progressive,287.31,13
+unet_shuffle_inception_no_progressive,359.13,4
+unet_shuffle_inception_no_progressive,430.96,3
+unet_shuffle_inception_no_progressive,502.78,4
+unet_shuffle_inception_no_progressive,574.61,1
+unet_shuffle_inception_no_progressive,646.44,1

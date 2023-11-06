@@ -1,0 +1,10 @@
+Modality,PSNR_loss,Count
+unet_shuffle_inception_no_progressive,0.00,0
+unet_shuffle_inception_no_progressive,0.10,0
+unet_shuffle_inception_no_progressive,0.20,0
+unet_shuffle_inception_no_progressive,0.30,0
+unet_shuffle_inception_no_progressive,0.40,0
+unet_shuffle_inception_no_progressive,0.50,0
+unet_shuffle_inception_no_progressive,0.60,0
+unet_shuffle_inception_no_progressive,0.70,0
+unet_shuffle_inception_no_progressive,0.80,0
